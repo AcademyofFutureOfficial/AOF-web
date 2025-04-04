@@ -1,0 +1,318 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #141E30, #243B55);
+    color: white;
+}
+
+/* Default Navbar Styles */
+nav {
+    background: transparent; /* Navbar is initially transparent */
+    height: 120x; /* Tall navbar initially */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    position: fixed;
+    top: 0; /* Stick the navbar to the top */
+    width: 100%;
+    z-index: 1000; /* Ensure it's on top of other content */
+    box-shadow: none; /* No shadow initially */
+    transition: top 0.6s ease, background 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+/* Scrolled Navbar Styles */
+nav.scrolled {
+    background: #34495E; /* Opaque background when scrolling */
+    height: 70px; /* Smaller navbar when scrolling */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6); /* Add shadow when scrolled */
+}
+
+nav .logo img {
+    height: 80px; /* Logo height */
+    transition: transform 0.3s ease, filter 0.3s ease, padding-right 0.3s ease;
+    padding-right: 30px; /* Add padding to the right of the logo */
+}
+
+nav.scrolled .logo img {
+    padding-right: 10px; /* Reduce padding to the right of the logo when scrolled */
+}
+
+nav .logo img:hover {
+    transform: scale(1.1); /* Enlarge logo on hover */
+    filter: brightness(1.2); /* Slightly brighten logo on hover */
+}
+
+/* Styling the Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ECF0F1; /* Light grey color for text */
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    padding: 10px 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #30D5C8; /* Light blue color */
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    color: #30D5C8; /* Highlight color on hover */
+    transform: scale(1.1); /* Enlarge link on hover */
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* Full width of the text */
+}
+
+/* When scrolled, reduce text size */
+nav.scrolled ul li a {
+    font-size: 1.2em; /* Normal font size when scrolled */
+}
+
+nav {
+    animation: slideDown 1.5s ease forwards;
+}
+
+/* Full-page background image styling */
+.full-page-image {
+    height: 110vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.full-page-image img.background-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fills the container */
+}
+
+header {
+    text-align: center;
+    padding: 100px;
+    background: #141E30;
+}
+
+header h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #30D5C8;
+}
+
+header h2 {
+    font-size: 1.5em;
+    color: #EEEEEE;
+}
+
+/* Content Styles */
+.content {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+/* Island Styles */
+.island {
+    background: #243B55;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 20px rgba(48, 213, 200, 0.3);
+}
+
+.island p {
+    font-size: 1.2em;
+}
+
+/* Overview Section */
+h3 {
+    color: #30D5C8;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.overview-item {
+    background: #243B55;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(48, 213, 200, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.overview-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.overview-item h4 {
+    font-size: 1.8em;
+    color: #25bdd6;
+    margin-bottom: 10px;
+}
+
+.overview-item p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #EEEEEE;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #25bdd6;
+    color: #243B55;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease, font-size 0.3s ease;
+}
+
+button:hover {
+    background: #25bdd6;
+    color: #141E30;
+    font-size: 1.2em;
+}
+
+/* Normal Image Styling */
+.normal-image {
+    width: 100%; /* Adjust size as needed */
+    border-radius: 10px;
+}
+
+/* A4 Image Styling */
+.a4-image {
+    width: 70%; /* Adjust size to fit your layout */
+    margin: 20px auto; /* Center the image */
+    display: block;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Button styling */
+.download-btn {
+    padding: 12px 24px;
+    background-color: #30D5C8;  /* Light cyan color */
+    color: #243B55;  /* Dark text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+    background-color: #1abc9c;  /* Darker cyan on hover */
+    transform: scale(1.05);  /* Slightly enlarge button on hover */
+}
+
+.download-btn:focus {
+    outline: none; /* Remove the outline on focus */
+}
+
+/* Optional: Button animation for click */
+.download-btn:active {
+    transform: scale(0.98);  /* Slightly shrink the button on click */
+}
+
+/* General Footer Styles */
+footer {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center all items horizontally */
+    align-items: center; /* Align all items vertically */
+    padding: 30px 20px; /* Extra padding for spacing */
+    margin-top: 20px; /* Add spacing above the footer */
+    background-color: #111; /* Footer background color */
+    color: #fff; /* Footer text color */
+    flex-wrap: wrap; /* Wrap content for responsiveness */
+    gap: 20px; /* Space between elements */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for a professional look */
+}
+
+/* Footer Content */
+footer .footer-content {
+    display: flex; /* Arrange all items in a row */
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Space between elements */
+}
+
+/* Contact Us Button */
+footer button {
+    background-color: #30D5C8; /* Neutral button color */
+    color: #091469; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for a professional look */
+    border-radius: 15px; /* Rounded corners */
+    font-size: 14px; /* Font size adjustment */
+    cursor: pointer; /* Pointer cursor */
+    transition: transform 0.3s ease; /* Smooth size change transition */
+    margin-left: auto; /* Push the button to the right */
+}
+
+footer button:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Footer Text */
+footer .footer-text p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Adjust text size */
+    color: #ccc; /* Softer text color */
+}
+
+/* Social Media Icons */
+footer .social-media {
+    display: flex; /* Arrange icons in a row */
+    gap: 15px; /* Space between icons */
+}
+
+footer .social-media img {
+    width: 25px; /* Consistent icon size */
+    height: 25px; /* Maintain square proportions */
+    border-radius: 50%; /* Circular icons */
+    cursor: pointer; /* Pointer cursor */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth scale and brightness transition */
+}
+
+footer .social-media img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    filter: brightness(1.3); /* Brighten the image */
+}

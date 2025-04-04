@@ -1,0 +1,93 @@
+// JavaScript to handle the scroll event and toggle the navbar state
+window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('nav'); // Select the navbar
+    if (window.scrollY > 0) {  // Check if the user has scrolled down
+        navbar.classList.add('scrolled'); // Add the 'scrolled' class to the navbar
+    } else {
+        navbar.classList.remove('scrolled'); // Remove the 'scrolled' class when at the top
+    }
+});
+
+// Chatbot Logic
+const chatbotIcon = document.getElementById('chatbot-icon');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const chatbotInput = document.getElementById('chatbot-input');
+const closeChatbot = document.getElementById('close-chatbot');
+
+// Toggle chatbot window
+chatbotIcon.addEventListener('click', () => {
+    chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close chatbot window
+closeChatbot.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+});
+
+const chatbotResponses = {
+    "hello": "Hi there! How can I help you today?",
+    "services": `We offer a variety of services, including technology, leadership, and creativity programs. <a href="Services A.html" style="color: #25bdd6; text-decoration: underline;">Visit our Services page</a> for more details!`,
+    "about": `We are dedicated to empowering the next generation through innovative education. <a href="About Us A.html" style="color: #25bdd6; text-decoration: underline;">Learn more on our About Us page</a>!`,
+    "contact": `You can reach us via the <a href="Contact Form A.html" style="color: #25bdd6; text-decoration: underline;">Contact Form</a> on our website.`,
+    "community": `Join our community initiatives to build strong networks through education and mentorship. <a href="Community Engagement A.html" style="color: #25bdd6; text-decoration: underline;">Check out the Community Engagement page</a>!`,
+    "default": "I'm sorry, I didn't understand that. Can you please rephrase?"
+};
+
+// Handle user input
+chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const userMessage = chatbotInput.value.toLowerCase();
+        chatbotMessages.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+        chatbotInput.value = '';
+
+        // Find a response
+        let response = chatbotResponses.default;
+        for (const key in chatbotResponses) {
+            if (userMessage.includes(key)) {
+                response = chatbotResponses[key];
+                break;
+            }
+        }
+
+        // Display bot response
+        setTimeout(() => {
+            chatbotMessages.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ${response}</div>`;
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 500);
+    }
+}); // Added the missing closing parenthesis here
+
+// Search Functionality
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase();
+    if (query) {
+        // Redirect to a search results page or filter content dynamically
+        alert(`Searching for: ${query}`);
+        // Example: Redirect to a search results page
+        window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+    }
+});
+
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase();
+    if (query) {
+        if (query.includes("social media") || query.includes("social media accounts")) {
+            // Scroll to the footer
+            const footer = document.querySelector('footer');
+            footer.scrollIntoView({ behavior: 'smooth' });
+
+            // Notify the user
+            setTimeout(() => {
+                alert("You can find our social media links in the footer below!");
+            }, 500);
+        } else {
+            // Redirect to a search results page or filter content dynamically
+            alert(`Searching for: ${query}`);
+            window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+        }
+    }
+});
